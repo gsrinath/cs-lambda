@@ -6,6 +6,7 @@ namespace ConsoleApp1
     class DelegateSample
     {
         delegate void ProcessSingleString(string s);
+        //delegate void ProcessSingleString(string s, int i);
         delegate int FunctionTakingOneIntAndReturningAnInt(int inp);
 
         static void PrintString(string s)
@@ -54,11 +55,11 @@ namespace ConsoleApp1
 
         static void Main1(string[] args)
         {
-            /*#region Delegate Definition
+            #region Delegate Definition
             ProcessSingleString printingUsingPrintString = PrintString;
             printingUsingPrintString("Hello World explicit");
 
-            ProcessSingleString printByDelegateInstantiation = delegate (string s) { Debug.WriteLine(s); };
+            ProcessSingleString printByDelegateInstantiation = delegate (string s) { Console.WriteLine(s); };
             printByDelegateInstantiation("Hello World Delegate Instantiation");
             #endregion
             
@@ -72,14 +73,14 @@ namespace ConsoleApp1
             
             
             #region AnonFunc
-            ProcessSingleString printingUsingAnonymous = (x) => { Debug.WriteLine(x); };
+            ProcessSingleString printingUsingAnonymous = (s) => { Console.WriteLine(s); };
             printingUsingAnonymous("Hello World Anon");
 
             //expression vs code block
             FunctionTakingOneIntAndReturningAnInt unitPosAnon = (x) => { return x % 10; };
             FunctionTakingOneIntAndReturningAnInt squareAnon = (x) =>  (x * x); 
             #endregion
-            */
+            
             
             #region Func and Action
             Func<int, int> squareFunc = (x) => (x*x);

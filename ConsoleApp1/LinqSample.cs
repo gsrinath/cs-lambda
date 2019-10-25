@@ -26,18 +26,22 @@ namespace ConsoleApp1
             new Student { Name = "Vinay", ChemistryMarks = 32, PhysicsMarks = 23, MathsMarks = 25},
         };
 
-        static void Main(string[] args)
+        static void Main1(string[] args)
         {
             //print names of students.
-            //PerformAction(students.Select(s => s.Name),(x)=> { Debug.WriteLine(x); Console.WriteLine(x); });
+            PerformAction(students,(Student x)=> { Debug.WriteLine(x.Name); Console.WriteLine(x.Name); });
+
+
+            students.Where((x) => ((x.MathsMarks + x.PhysicsMarks + x.ChemistryMarks) / 3 < 40)).Select((s) => s.Name).Count(); ;
 
             //Use PerformAction
 
             //print names of students who failed Maths
-            Debug.WriteLine((students.Where((x) => x.MathsMarks < 40).Select(s => s.Name)).Count());
+            Console.WriteLine((students.Where((x) => x.MathsMarks < 40).Select(s => s.Name))
+                .Aggregate(0, (result, s) => (result + 1)));
 
             // Count number of students who failed Maths
-            Debug.WriteLine(students.Where((x) => x.MathsMarks < 40).Select(s => s.Name)
+            Console.WriteLine(students.Where((x) => x.MathsMarks < 40).Select(s => s.Name)
                 .Aggregate(0, (result, x) => (result+1)));
 
             //students.Aggregate(seed: 0,(func<int,Student>: (result,item)=(result+item.PhysicsMark),)
